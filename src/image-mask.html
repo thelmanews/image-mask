@@ -1,6 +1,7 @@
 <link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../th-animated/th-animated.html">
 
-<polymer-element name="image-mask" attributes="shape size src href">
+<polymer-element name="image-mask" extends="th-animated" attributes="shape size src href">
 	<template>
 	    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">		
 			<g>
@@ -40,9 +41,11 @@
     <script>
         Polymer("image-mask", {
 			shape: "circle",
-			size: "320",
+			size: '320',
 			title: '',
 			ready: function() {
+				this.size = Math.min(this.computeWidth(this.size), this.computeHeight(this.size)); // for composer sizing - allows size to be given as a % or pixel value;
+				console.log(this.size);
 				this.maskId = "mask-"+Math.random().toString(36).substr(2, 5);
 				if(!this.href) {
 					this.href = this.$.link.removeAttribute("xlink:href");

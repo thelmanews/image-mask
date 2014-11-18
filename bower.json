@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.1"
+    "polymer": "Polymer/polymer#~0.5.1",
+    "th-animated": "https://github.com/thelmanews/th-animated.git"
   }
 }
