@@ -3,6 +3,11 @@
 
 <polymer-element name="image-mask" extends="th-animated" attributes="shape size src href">
 	<template>
+		<style>
+			:host{
+				width: 320px;
+			}
+		</style>
 	    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">		
 			<g>
 				<clipPath id="{{maskId}}">
@@ -41,10 +46,9 @@
     <script>
         Polymer("image-mask", {
 			shape: "circle",
-			size: '320',
 			title: '',
 			ready: function() {
-				this.size = Math.min(this.computeWidth(this.size), this.computeHeight(this.size)); // for composer sizing - allows size to be given as a % or pixel value;
+				this.size = Math.min(this.computeWidth(), this.computeHeight()); // for composer sizing - allows size to be given as a % or pixel value;
 				console.log(this.size);
 				this.maskId = "mask-"+Math.random().toString(36).substr(2, 5);
 				if(!this.href) {
