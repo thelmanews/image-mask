@@ -8,6 +8,10 @@
 				width: 320px;
 				display: inline-block;
 			}
+			svg {
+				width: 100%;
+				height: 100%;
+			}
 		</style>
 		    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">		
 					<g>
@@ -48,9 +52,8 @@
         Polymer("image-mask", {
 			shape: "circle",
 			title: '',
-			init: function() {
-				this.size = Math.min(this.computeWidth(), this.computeHeight()); // for composer sizing - allows size to be given as a % or pixel value;
-				
+			ready: function() {
+				this.size = Math.min(this.computeWidth(), this.computeHeight()); 
 				this.maskId = "mask-"+Math.random().toString(36).substr(2, 5);
 				if(!this.href) {
 					this.href = this.$.link.removeAttribute("xlink:href");
