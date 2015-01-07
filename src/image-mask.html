@@ -6,6 +6,7 @@
 		<style>
 			:host{
 				width: 320px;
+				height: 320px;
 				display: inline-block;
 			}
 			svg {
@@ -34,7 +35,7 @@
 							</template>
 
 						    <template if="{{shape == 'hexagon'}}">
-								<polygon points="{{size/1.155}},{{size/1.33}} {{size/2.3}},{{size}} 0,{{size/1.33}} 0,{{size/4}} {{size/2.3}},0 {{size/1.155}},{{size/4}}" />
+								<polygon points="{{size/1.055}},{{size/1.33}} {{size/2}},{{size}} {{size/18}},{{size/1.33}} {{size/18}},{{size/4}} {{size/2}},0 {{size/1.055}},{{size/4}}	" />
 							</template>
 
 						    <template if="{{shape == 'ios-app'}}">
@@ -54,6 +55,9 @@
 			title: '',
 			ready: function() {
 				this.size = Math.min(this.computeWidth(), this.computeHeight()); 
+				
+				console.log(this.shape)
+				console.log(this.size);
 				this.maskId = "mask-"+Math.random().toString(36).substr(2, 5);
 				if(!this.href) {
 					this.href = this.$.link.removeAttribute("xlink:href");
